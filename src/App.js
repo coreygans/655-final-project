@@ -1,20 +1,25 @@
 import { React } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
+import Homepage from "./pages/Homepage";
+import Chat from "./pages/Chat";
+import Login from "./pages/Login";
+import Talk from "./pages/Talk";
+
+
 
 function App() {
   return (
 
-    <CartProvider>
+ 
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/talk" element={<CheckoutPage />} />
-          <Route path="/chat" element={<About />} />
-          <Route path="/login" element={<ThankYou />} />
+          <Route path="/" element={<Homepage />} />
+          <Route path="/talk" element={<Talk />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
-      </CartProvider>
   );
 }
 
