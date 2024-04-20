@@ -1,8 +1,13 @@
 import React from 'react'
+import SiteHeader from '../components/Header'
 
 function Homepage() {
   return (
-    <div>Homepage</div>
+    <div>
+<SiteHeader />
+
+
+    </div>
   )
 }
 
