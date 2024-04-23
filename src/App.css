@@ -10,20 +10,21 @@
   padding: 1em;
 }
 
-h1{
-  margin:auto;
+h1 {
+  margin: auto;
   text-align: center;
 }
 
-.siteOverview{
+.siteOverview {
   margin: auto;
   text-align: center;
   max-width: 700px;
 }
-.signupin{
-margin-left: 80%;}
+.signupin {
+  margin-left: 80%;
+}
 
-.rdButtons{
+.rdButtons {
   max-width: 300px;
   margin: auto;
   padding-top: 10px;
@@ -34,7 +35,7 @@ margin-left: 80%;}
   margin: 10px;
 }
 
-.talk-to-ducky{
+.talk-to-ducky {
   margin: auto;
   max-width: 650px;
   border: 2px solid black;
@@ -42,7 +43,44 @@ margin-left: 80%;}
   padding: 20px;
   padding-top: 40px;
 }
+.chat-with-ducky {
+  margin: auto;
+  max-width: 650px;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  padding-top: 40px;
+}
+.rdChatMessage {
+  display: flex;
+  padding: 10px;
+  margin-top: 20px;
+  text-align: center;
+  max-width: 600px;
+}
+.rdChatMessage .avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 5px;
+}
 
+.rdChatMessage .message-content {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+}
+
+input.chatTextField {
+  width: 480px;
+  line-height: 2em;
+  margin-left: 13px;
+}
+
+.hide {
+  display: none;
+}
 
 .rdTalkMessage {
   border: 2px solid black;
@@ -51,7 +89,6 @@ margin-left: 80%;}
   margin-top: 20px;
   text-align: center;
   max-width: 600px;
-
 }
 
 .rdTalkButtons {
@@ -60,10 +97,9 @@ margin-left: 80%;}
   padding-top: 10px;
 }
 
-.rdTalkButtons button{
+.rdTalkButtons button {
   padding: 10px;
   margin: 10px;
-
 }
 
 .bounceDuck {
@@ -71,7 +107,8 @@ margin-left: 80%;}
 }
 
 @keyframes bounce-animation {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -79,7 +116,7 @@ margin-left: 80%;}
   }
 }
 
-.activeListening{
+.activeListening {
   margin-left: 5px;
 }
 
@@ -90,7 +127,7 @@ margin-left: 80%;}
   height: 27px;
 }
 
-.switch input { 
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -104,8 +141,8 @@ margin-left: 80%;}
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -116,16 +153,16 @@ margin-left: 80%;}
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #2196f3;
 }
 
 input:checked + .slider:before {

@@ -7,8 +7,7 @@ import Login from "./pages/Login";
 import Talk from "./pages/Talk";
 
 
-
-function App() {
+function App(props) {
   return (
 
  
