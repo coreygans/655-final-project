@@ -8,8 +8,14 @@ function Chat(props) {
 
   const [messages, setMessages] = useState(props.messages || []);
   const [chatMessage, setChatMessage] = useState("");
-  const handleClick = () => {
+  const endChat = () => {
     setHasClass(!hasClass);
+
+  };
+
+  const startChat = () => {
+    setHasClass(!hasClass);
+    setMessages([]);
   };
 
   function addMessage(chatMessage) {
@@ -30,6 +36,16 @@ function Chat(props) {
     }
     setChatMessage("");
   }
+
+  function downloadChat(){
+    const jsonString = JSON.stringify(messages, null, 2);
+    navigator.clipboard.writeText(jsonString)
+      .then(() => {
+        alert("Messages copied to clipboard!");
+      })
+      .catch((error) => {
+        console.error("Failed to copy messages to clipboard:", error);
+      });  }
 
   return (
     <div>
@@ -83,19 +99,18 @@ function Chat(props) {
           </form>
         </div>
         <div className="rdChatButtons">
-          {/* TODO: Need to add a start new chat and download chat button here. the Start new chat will show after End Chat is clicked and then End Chat will be hidden */}
 
           <button
-            onClick={handleClick}
+            onClick={endChat}
             className={hasClass ? "hide" : "endChat"}>
             End Chat
           </button>
           <button
-            onClick={handleClick}
+            onClick={startChat}
             className={hasClass ? "startNewChat" : "hide"}>
             Start New Chat
           </button>
-          <button>Download Chat</button>
+          <button onClick={downloadChat}>Copy Chat to Clipboard</button>
         </div>
       </div>
     </div>
