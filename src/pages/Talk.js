@@ -25,9 +25,9 @@ function Talk() {
         </div>
         <div className="rdTalkButtons">
           Activate Listening Mode: 
-          <label class="switch activeListening">
+          <label className="switch activeListening">
             <input type="checkbox" checked={isChecked} onChange={toggleListening} />
-            <span class="slider round"></span>
+            <span className="slider round"></span>
           </label>
   
         </div>

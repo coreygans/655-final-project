@@ -2,20 +2,21 @@ import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import SiteHeader from "../components/Header";
 import {auth} from "../firebase";
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth';
+import {UserAuth} from "../components/context/AuthContext";
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  console.log(auth)
+
+  const {createUser, signIn, logout, user} = UserAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      signInWithEmailAndPassword(auth,email, password);
-      navigate('/dashboard'); // Redirect to dashboard after login
+      await signIn(email, password);
+      navigate('/dashboard');
     } catch (error) {
       setError(error.message);
     }
@@ -26,8 +27,8 @@ function Login() {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      createUserWithEmailAndPassword(auth, email, password);
-      navigate('/dashboard'); // Redirect to dashboard after sign up
+     await createUser(email, password);
+      navigate('/dashboard');
     } catch (error) {
       setError(error.message);
     }

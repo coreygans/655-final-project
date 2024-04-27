@@ -7,7 +7,10 @@ function Dashboard() {
    
     <div>
          <SiteHeader />
-        Dashboard</div>
+        <h1>Dashboard</h1>
+        
+        
+        </div>
   )
 }
 
