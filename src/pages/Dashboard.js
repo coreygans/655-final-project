@@ -6,7 +6,6 @@ function Dashboard() {
   return (
    
     <div>
-         <SiteHeader />
         <h1>Dashboard</h1>
         
         

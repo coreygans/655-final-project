@@ -9,8 +9,6 @@ function Talk() {
 
   return (
     <div>
-      <SiteHeader />
-
       <div className="talk-to-ducky">
         <img
           alt="rubber ducky"

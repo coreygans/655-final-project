@@ -49,7 +49,6 @@ function Chat(props) {
 
   return (
     <div>
-      <SiteHeader />
 
       <div className="chat-with-ducky">
         <div className="rdChatMessage">

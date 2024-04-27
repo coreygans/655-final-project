@@ -36,9 +36,7 @@ function Login() {
 
 
   return (
-    <div>
-    <SiteHeader />
- 
+    <div> 
     <div>
       <form>
         <label>

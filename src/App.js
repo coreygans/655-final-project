@@ -7,13 +7,17 @@ import Login from "./pages/Login";
 import Talk from "./pages/Talk";
 import Dashboard from "./pages/Dashboard";
 import { AuthContextProvider } from "./components/context/AuthContext";
+import SiteHeader from "./components/Header";
 import { UserAuth } from "./components/context/AuthContext";
+
+
 
 function App(props) {
 
   return (
-
+    <AuthContextProvider>
       <BrowserRouter>
+        <SiteHeader />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/talk" element={<Talk />} />
@@ -21,9 +25,10 @@ function App(props) {
 
           <Route path="/login" element={<Login />} />
 
-          <Route path="/dashboard" element={ <Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
+    </AuthContextProvider>
   );
 }
 
