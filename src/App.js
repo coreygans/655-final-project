@@ -5,7 +5,6 @@ import Homepage from "./pages/Homepage";
 import Chat from "./pages/Chat";
 import Login from "./pages/Login";
 import Talk from "./pages/Talk";
-const { env } = require('node:process');
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -14,12 +13,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: env.firebase_api,
-  authDomain: env.firebase_auth,
-  projectId: env.firebase_projectId,
-  storageBucket: env.firebase_storageBucket,
-  messagingSenderId: env.firebase_messagingSenderId,
-  appId: env.firebase_appId
+  apiKey: process.env.firebase_api,
+  authDomain: process.env.firebase_auth,
+  projectId: process.env.firebase_projectId,
+  storageBucket: process.env.firebase_storageBucket,
+  messagingSenderId: process.env.firebase_messagingSenderId,
+  appId: process.env.firebase_appId
 };
 
 // Initialize Firebase
