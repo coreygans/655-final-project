@@ -1,9 +1,19 @@
 import React from 'react'
+import SiteHeader from '../components/Header'
 
 function Login() {
   return (
-    <div>Login</div>
+    <div>
+    <SiteHeader />
+ 
+    <form>
+      Email: <input type='text'></input>
+    </form>
+
+ </div>
+
+ 
   )
 }
 
-export default Login
+export default Login;
