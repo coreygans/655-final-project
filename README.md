@@ -25,7 +25,7 @@ To save the Chat messages that you entered, click on the Copy Clipboard icon and
 
 #### Chat demo
 
-![Chat Demo](/images/duck-chat-demo.gif)
+![Chat Demo](/public/images/duck-chat-demo.gif)
 
 ### How to use Talk
 
