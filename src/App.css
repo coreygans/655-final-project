@@ -17,9 +17,16 @@ h1 {
   text-align: center;
 }
 
+.home-link{
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+}
+
 .rdLogo{
   max-width: 44px;
   max-height: 44px;
+  margin-top: 20px;
 }
 
 .siteOverview {
@@ -32,17 +39,15 @@ h1 {
   max-width: 700px;
 
 }
-.sendButton{
+.sendButton, .copyButton, .endChat, .startNewChat{
   padding-top: 1px;
-  border: none;
-  background-color: none;
   font-size: 20px;
 }
+
 .appLinks a{
   padding-left: 27px;
   color: black;
   font-weight: 700;
-  text-decoration: none;
 }
 
 .signupin {
@@ -67,7 +72,7 @@ h1 {
 .talk-to-ducky {
   margin: auto;
   max-width: 650px;
-  border: 2px solid black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
   padding: 20px;
   padding-top: 40px;
@@ -75,7 +80,8 @@ h1 {
 .chat-with-ducky {
   margin: auto;
   max-width: 650px;
-  border: 2px solid black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
   border-radius: 5px;
   padding: 20px;
   padding-top: 40px;

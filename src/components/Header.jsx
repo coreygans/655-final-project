@@ -41,7 +41,7 @@ function SiteHeader() {
         <img
           alt="rubber ducky"
           className="rdLogo"
-          src="/images/rd-high-res.jpg"></img>{" "}
+          src="/images/rd-high-res.jpg"></img>
         Rubber Ducky
       </Link>
       <div className="header-links">

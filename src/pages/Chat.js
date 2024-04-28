@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
 import { IoMdSend } from "react-icons/io";
+import { HiClipboardCopy } from "react-icons/hi";
 
 function Chat(props) {
   const [hasClass, setHasClass] = useState(false);
@@ -9,7 +10,6 @@ function Chat(props) {
   const [chatMessage, setChatMessage] = useState("");
   const endChat = () => {
     setHasClass(!hasClass);
-
   };
 
   const startChat = () => {
@@ -22,7 +22,6 @@ function Chat(props) {
     const updatedMessages = [...messages, newMessage];
     setMessages(updatedMessages);
     console.log("Updated messages:", updatedMessages);
-  
   }
 
   function handleSubmit(event) {
@@ -36,19 +35,20 @@ function Chat(props) {
     setChatMessage("");
   }
 
-  function downloadChat(){
+  function downloadChat() {
     const jsonString = JSON.stringify(messages, null, 2);
-    navigator.clipboard.writeText(jsonString)
+    navigator.clipboard
+      .writeText(jsonString)
       .then(() => {
         alert("Messages copied to clipboard!");
       })
       .catch((error) => {
         console.error("Failed to copy messages to clipboard:", error);
-      });  }
+      });
+  }
 
   return (
     <div>
-
       <div className="chat-with-ducky">
         <div className="rdChatMessage">
           <div className="avatar">
@@ -68,7 +68,10 @@ function Chat(props) {
         {messages.map((message) => (
           <div key={message.id} className="rdChatMessage">
             <div className="avatar">
-              <img width={50} alt="rubber ducky" src="/images/user-avatar.png"></img>
+              <img
+                width={50}
+                alt="rubber ducky"
+                src="/images/user-avatar.png"></img>
             </div>
             <div className="message-content">{message.chatMessage}</div>
           </div>
@@ -93,15 +96,14 @@ function Chat(props) {
               value={chatMessage}
               onChange={(e) => setChatMessage(e.target.value)}
               type="text"></input>
-              
-            <button className="sendButton"><IoMdSend /></button>
+
+            <button className="sendButton">
+              <IoMdSend />
+            </button>
           </form>
         </div>
         <div className="rdChatButtons">
-
-          <button
-            onClick={endChat}
-            className={hasClass ? "hide" : "endChat"}>
+          <button onClick={endChat} className={hasClass ? "hide" : "endChat"}>
             End Chat
           </button>
           <button
@@ -109,7 +111,9 @@ function Chat(props) {
             className={hasClass ? "startNewChat" : "hide"}>
             Start New Chat
           </button>
-          <button onClick={downloadChat}>Copy Chat to Clipboard</button>
+          <button className="copyButton" alt="Copy chat to clipboard" onClick={downloadChat}>
+            <HiClipboardCopy />
+          </button>
         </div>
       </div>
     </div>
