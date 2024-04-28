@@ -69,6 +69,7 @@ function SiteHeader() {
           </Link>
         </div>
       </div>
+      <hr></hr>
     </header>
   );
 }

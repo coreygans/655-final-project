@@ -3,9 +3,18 @@
 * {
   box-sizing: border-box;
 }
+
+body {
+  background-color: rgb(131, 194, 240);
+}
+
 #root {
   max-width: 940px;
   margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 20px;
+  min-height: 800px;
 }
 
 #root > div {
@@ -17,13 +26,59 @@ h1 {
   text-align: center;
 }
 
-.home-link{
+.home-link {
   color: black;
   font-weight: 700;
   text-decoration: none;
 }
+button{
+  background-color: #2196f3; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 14px 10px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 
-.rdLogo{
+}
+
+input{
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #2196f3;
+  color: white;
+}
+
+.rdLogo {
   max-width: 34px;
   max-height: 34px;
   margin-top: 20px;
@@ -35,17 +90,21 @@ h1 {
   text-align: center;
   max-width: 700px;
 }
-.appLinks{
+.appLinks {
   margin: auto;
   max-width: 700px;
+}
+.sendButton,
+.copyButton,
+.endChat,
+.startNewChat {
+  font-size: 1.3em;
+  margin: 10px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 
 }
-.sendButton, .copyButton, .endChat, .startNewChat{
-  padding-top: 1px;
-  font-size: 20px;
-}
 
-.appLinks a{
+.appLinks a {
   padding-left: 27px;
   color: black;
   font-weight: 700;
@@ -57,20 +116,10 @@ h1 {
 .logout {
   margin-left: 80%;
 }
-.loLink{
+.loLink {
   margin-left: 10px;
 }
 
-.rdButtons {
-  max-width: 300px;
-  margin: auto;
-  padding-top: 10px;
-}
-
-.rdButtons button {
-  padding: 10px;
-  margin: 10px;
-}
 
 .talk-to-ducky {
   margin: auto;
