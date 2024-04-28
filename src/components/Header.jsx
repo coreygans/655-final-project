@@ -38,7 +38,10 @@ function SiteHeader() {
   return (
     <header className="header">
       <Link to="/" className="home-link">
-        <h1>Welcome to Rubber Ducky!</h1>
+      <img
+          alt="rubber ducky"
+          className="rdLogo"
+          src="/images/rd-high-res.jpg"></img> Rubber Ducky
       </Link>
       <div className="header-links">
         {isEmpty(user) ? (

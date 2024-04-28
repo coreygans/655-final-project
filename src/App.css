@@ -17,6 +17,11 @@ h1 {
   text-align: center;
 }
 
+.rdLogo{
+  max-width: 44px;
+  max-height: 44px;
+}
+
 .siteOverview {
   margin: auto;
   text-align: center;
