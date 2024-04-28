@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+// import { getFirestore } from "firebase/firestore";
 
-// TODO: Replace the following with your app's Firebase project configuration
 // See: https://firebase.google.com/docs/web/learn-more#config-object
 const fbConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API,
@@ -19,5 +19,6 @@ const app = initializeApp(fbConfig);
 
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
+// export const db = getFirestore(app);
 
 export default app;

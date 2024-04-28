@@ -69,7 +69,6 @@ function Login() {
         <br />
         <button onClick={handleLogin}>Login</button>
         <button onClick={handleSignUp}>Sign Up</button>
-        <button onClick={handleSignout}>Logout</button>
 
         {error && <p>{error}</p>}
       </form>

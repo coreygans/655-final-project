@@ -29,7 +29,7 @@ function App(props) {
     return Object.keys(obj).length === 0;
   }
 
-
+//TODO: Need to get the conditional routing working with Dashboard
   return (
     <AuthContextProvider >
       <BrowserRouter>
