@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { db } from "../firebase";
 import { UserAuth } from "../components/context/AuthContext";
 import { collection, getDocs, addDoc, query, where } from "firebase/firestore";
@@ -6,13 +6,6 @@ import { collection, getDocs, addDoc, query, where } from "firebase/firestore";
 function Dashboard() {
   const { user } = UserAuth();
   const [credits, setCredits] = useState([]);
-
-  useEffect(() => {
-    if (user) {
-      getCredits(user);
-    }
-  }, [user]);
-
 
   const PurchaseCredits = async (e) => {
     try {
@@ -37,7 +30,7 @@ function Dashboard() {
     }).format(timestamp);
     return date;
   };
-  const getCredits = async (user) => {
+  const getCredits = useCallback(async (user) => {
     if (!user) return;
     const q = query(collection(db, "credits"), where("userId", "==", user.uid));
     console.log(q);
@@ -48,7 +41,9 @@ function Dashboard() {
         console.log(doc.id, " => ", doc.data());
         const fbresponse = doc.data();
         fbresponse.purchaseDate = formatDate(fbresponse.purchaseDate);
-        fbresponse.dateRedeemed = (fbresponse.dateRedeemed ?  formatDate(fbresponse.dateRedeemed) : "Not Redeemed");
+        fbresponse.dateRedeemed = fbresponse.dateRedeemed
+          ? formatDate(fbresponse.dateRedeemed)
+          : "Not Redeemed";
         console.log(fbresponse);
         creditData.push(fbresponse);
       });
@@ -56,7 +51,12 @@ function Dashboard() {
     } catch (error) {
       console.error("Error getting credits: ", error);
     }
-  };
+  }, []);
+  useEffect(() => {
+    if (user) {
+      getCredits(user);
+    }
+  }, [user, getCredits]);
 
   return (
     <div>

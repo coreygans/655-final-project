@@ -57,7 +57,9 @@ h1 {
 .logout {
   margin-left: 80%;
 }
-
+.loLink{
+  margin-left: 10px;
+}
 
 .rdButtons {
   max-width: 300px;

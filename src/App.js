@@ -1,5 +1,5 @@
 import { React } from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Homepage from "./pages/Homepage";
 import Chat from "./pages/Chat";
@@ -27,7 +27,6 @@ function App(props) {
     // Check for enumerable own properties (excluding inherited properties)
     return Object.keys(obj).length === 0;
   }
-//TODO: Clean up all unused vars across files
 //TODO: Need to get the conditional routing working with Dashboard
   return (
     <AuthContextProvider >
