@@ -43,7 +43,7 @@ function Dashboard() {
         fbresponse.purchaseDate = formatDate(fbresponse.purchaseDate);
         fbresponse.dateRedeemed = fbresponse.dateRedeemed
           ? formatDate(fbresponse.dateRedeemed)
-          : "Not Redeemed";
+          : "Call 867-5309";
         console.log(fbresponse);
         creditData.push(fbresponse);
       });
