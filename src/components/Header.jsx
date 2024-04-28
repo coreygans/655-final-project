@@ -17,9 +17,10 @@ function SiteHeader() {
 
     // Check for enumerable own properties (excluding inherited properties)
     return Object.keys(obj).length === 0;
+    
   }
-
   console.log(isEmpty(user));
+
   const navigate = useNavigate();
   const [error, setError] = useState(null);
 
@@ -72,6 +73,8 @@ function SiteHeader() {
       </div>
     </header>
   );
+
+
 }
 
 export default SiteHeader;

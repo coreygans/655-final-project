@@ -28,7 +28,7 @@ function App(props) {
     // Check for enumerable own properties (excluding inherited properties)
     return Object.keys(obj).length === 0;
   }
-
+//TODO: Clean up all unused vars across files
 //TODO: Need to get the conditional routing working with Dashboard
   return (
     <AuthContextProvider >

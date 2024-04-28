@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { auth, db } from "../firebase";
 import { UserAuth } from "../components/context/AuthContext";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, getDocs, addDoc, query, where } from "firebase/firestore";
 
 function Dashboard() {
   const { user } = UserAuth();
-//TODO: Need to format this to record the correct timestamp
+
+  const [credits, setCredits] = useState([]);
+
+  useEffect(() => {
+    getCredits(); // Call getCredits on component mount
+  }, []);  // Empty dependency array
+
+
+  //TODO: Need to format this to record the correct timestamp
+  //TODO: Need to loop through the qty from the purchase and create the number of credits
   const PurchaseCredits = async (e) => {
     try {
       const docRef = await addDoc(collection(db, "credits"), {
@@ -20,15 +29,24 @@ function Dashboard() {
     }
     alert("Purchase complete! See your credits in the table.");
   };
-//TODO: Need to filter this query to include the userId
+  //TODO: Need to fix the user.uid having a null state and remove the hard coding
   const getCredits = async (e) => {
-    const querySnapshot = await getDocs(collection(db, "credits"));
-    querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${doc.data()}`);
-    });
+    const q = query(collection(db, "credits"), where("userId", "==", "cLm1tgjbEYRs4stBGoWemJbp4q72"));
+
+    try {
+      const querySnapshot = await getDocs(q);
+      const creditData = [];
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+        creditData.push(doc.data());
+      });
+      setCredits(creditData);
+    } catch (error) {
+      console.error("Error getting credits: ", error);
+    }
   };
 
-  getCredits();
+
   return (
     <div>
       <h1>Dashboard</h1>
@@ -38,6 +56,30 @@ function Dashboard() {
       <label>15 min Live person credit - $15</label>
       <input id="talkQty" type="text"></input> <br />
       <button onClick={PurchaseCredits}>Buy</button>
+      <div className="creditsTable">
+        <table>
+          <thead>
+            <tr>
+              <th>Date Purchased</th>
+              <th>Date Redeemed</th>
+              <th>Redeemed</th>
+            </tr>
+          </thead>
+          <tbody>
+            {credits.map((credit) => (
+              <tr>
+                <td>{credit.purchaseDate}</td>
+                <td>
+                  {credit.dateRedeemed
+                    ? credit.dateRedeemed
+                    : ""}
+                </td>
+                <td>{credit.redeemed ? "Yes" : "No"}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
