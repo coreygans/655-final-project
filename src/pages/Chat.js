@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
+import { IoMdSend } from "react-icons/io";
 
 function Chat(props) {
   const [hasClass, setHasClass] = useState(false);
@@ -92,7 +93,8 @@ function Chat(props) {
               value={chatMessage}
               onChange={(e) => setChatMessage(e.target.value)}
               type="text"></input>
-            <button>Send message</button>
+              
+            <button className="sendButton"><IoMdSend /></button>
           </form>
         </div>
         <div className="rdChatButtons">

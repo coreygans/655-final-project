@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { UserAuth } from "../components/context/AuthContext";
+//import { RiSpeakFill, RiChat3Fill } from "react-icons/ri";
 
 function SiteHeader() {
   const { user, logout } = UserAuth();
@@ -17,7 +18,6 @@ function SiteHeader() {
 
     // Check for enumerable own properties (excluding inherited properties)
     return Object.keys(obj).length === 0;
-    
   }
   console.log(isEmpty(user));
 
@@ -38,10 +38,11 @@ function SiteHeader() {
   return (
     <header className="header">
       <Link to="/" className="home-link">
-      <img
+        <img
           alt="rubber ducky"
           className="rdLogo"
-          src="/images/rd-high-res.jpg"></img> Rubber Ducky
+          src="/images/rd-high-res.jpg"></img>{" "}
+        Rubber Ducky
       </Link>
       <div className="header-links">
         {isEmpty(user) ? (
@@ -59,13 +60,17 @@ function SiteHeader() {
             </a>
           </div>
         )}
+        <div className="appLinks">
+          <Link to="/chat" className="duck-chat">
+          Chat with RD
+          </Link>
+          <Link to="/talk" className="duck-talk">
+             Talk with RD
+          </Link>
+        </div>
       </div>
-      <hr></hr>
-      
     </header>
   );
-
-
 }
 
 export default SiteHeader;
