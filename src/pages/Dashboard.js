@@ -8,10 +8,11 @@ function Dashboard() {
   const [credits, setCredits] = useState([]);
 
   useEffect(() => {
-    getCredits(user ? user.uid : "cLm1tgjbEYRs4stBGoWemJbp4q72");
+    if (user) {
+      getCredits(user);
+    }
   }, [user]);
 
-  //TODO: Need to format this to record the correct timestamp
 
   const PurchaseCredits = async (e) => {
     try {
@@ -22,23 +23,34 @@ function Dashboard() {
         redeemed: false,
       });
       console.log("Document written with ID: ", docRef.id);
+      getCredits(user);
     } catch (e) {
       console.error("Error adding document: ", e);
-    }    alert("Purchase complete! See your credits in the table.");
+    }
+    alert("Purchase complete! See your credits in the table.");
   };
-  //TODO: Need to fix the user.uid having a null state and remove the hard coding
+  const formatDate = (timestamp) => {
+    const date = new Intl.DateTimeFormat("en-US", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).format(timestamp);
+    return date;
+  };
   const getCredits = async (user) => {
-    const q = query(
-      collection(db, "credits"),
-      where("userId", "==", user ? user.uid : "cLm1tgjbEYRs4stBGoWemJbp4q72")
-    );
+    if (!user) return;
+    const q = query(collection(db, "credits"), where("userId", "==", user.uid));
     console.log(q);
     try {
       const querySnapshot = await getDocs(q);
       const creditData = [];
       querySnapshot.forEach((doc) => {
         console.log(doc.id, " => ", doc.data());
-        creditData.push(doc.data());
+        const fbresponse = doc.data();
+        fbresponse.purchaseDate = formatDate(fbresponse.purchaseDate);
+        fbresponse.dateRedeemed = (fbresponse.dateRedeemed ?  formatDate(fbresponse.dateRedeemed) : "Not Redeemed");
+        console.log(fbresponse);
+        creditData.push(fbresponse);
       });
       setCredits(creditData);
     } catch (error) {
