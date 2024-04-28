@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
 
-import SiteHeader from "../components/Header";
-
 function Chat(props) {
   const [hasClass, setHasClass] = useState(false);
 

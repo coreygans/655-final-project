@@ -15,7 +15,7 @@ import { UserAuth } from "./components/context/AuthContext";
 function App(props) {
 
   return (
-    <AuthContextProvider>
+    <AuthContextProvider >
       <BrowserRouter>
         <SiteHeader />
         <Routes>

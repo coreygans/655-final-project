@@ -1,7 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
+import {auth} from "../firebase";
+import {UserAuth} from "../components/context/AuthContext";
 
 function SiteHeader() {
+  // const {user, logout} = UserAuth();
+  // const navigate = Navigate();
+  // const [error, setError] = useState(null);
+
+  // const handlelogout = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await logout(auth);
+  //     console.log(user);
+  //     navigate('/');
+  //   } catch (error) {
+  //     setError(error.message);
+  //   }
+  // };
 
   return (
     <header className="header">
@@ -14,6 +30,9 @@ function SiteHeader() {
             <Link to="/login" className="header-link">
               Sign up / Sign in
             </Link>
+          </div>
+          <div className="logout">
+          {/* <a onClick={handlelogout} href="#">Logout</a> */}
           </div>
       </div>
       <hr></hr>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import SiteHeader from "../components/Header";
 
 function Talk() {
   const [isChecked, setIsChecked] = useState(false);
