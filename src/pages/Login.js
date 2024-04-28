@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import {auth} from "../firebase";
 import {UserAuth} from "../components/context/AuthContext";
 
 function Login() {
@@ -8,7 +7,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const {createUser, signIn, logout, user} = UserAuth();
+  const {createUser, signIn, user} = UserAuth();
 
 
   

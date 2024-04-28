@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { UserAuth } from "../components/context/AuthContext";
@@ -22,16 +22,16 @@ function SiteHeader() {
   console.log(isEmpty(user));
 
   const navigate = useNavigate();
-  const [error, setError] = useState(null);
 
   const handlelogout = async (e) => {
+    
     e.preventDefault();
     try {
       await logout(auth);
       console.log(user);
       navigate("/");
-    } catch (error) {
-      setError(error.message);
+    } catch (e) {
+      console.error("Error logging out: ", e);
     }
   };
 
@@ -55,7 +55,7 @@ function SiteHeader() {
           <div className="logout">
             Welcome {user.email}! <br />
             <Link to="/dashboard">Dashboard </Link>
-            <a onClick={handlelogout} href="#">
+            <a onClick={handlelogout} href="/">
               Logout
             </a>
           </div>

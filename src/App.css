@@ -24,9 +24,10 @@ h1 {
 }
 
 .rdLogo{
-  max-width: 44px;
-  max-height: 44px;
+  max-width: 34px;
+  max-height: 34px;
   margin-top: 20px;
+  margin-right: 10px;
 }
 
 .siteOverview {

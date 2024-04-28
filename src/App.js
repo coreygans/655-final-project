@@ -8,7 +8,6 @@ import Talk from "./pages/Talk";
 import Dashboard from "./pages/Dashboard";
 import { AuthContextProvider } from "./components/context/AuthContext";
 import SiteHeader from "./components/Header";
-import {auth} from "./firebase";
 import { UserAuth } from "./components/context/AuthContext";
 
 
@@ -43,7 +42,7 @@ function App(props) {
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={ <Dashboard /> } />
 
-          {/* <Route path="/dashboard" element={ isLoggedOut ? (<Navigate to="/login" replace />) : (<Dashboard />) } /> */}
+          <Route path="/dashboard" element={ isEmpty(user) ? (<Login />) : (<Dashboard />) } />
         </Routes>
       </BrowserRouter>
     </AuthContextProvider>
