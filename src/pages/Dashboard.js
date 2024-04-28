@@ -5,16 +5,15 @@ import { collection, getDocs, addDoc, query, where } from "firebase/firestore";
 
 function Dashboard() {
   const { user } = UserAuth();
-
   const [credits, setCredits] = useState([]);
 
   useEffect(() => {
-    getCredits(); // Call getCredits on component mount
-  }, []);  // Empty dependency array
+    getCredits(user ? user.uid : "placeholder"); 
+  }, []);  
 
 
   //TODO: Need to format this to record the correct timestamp
-  //TODO: Need to loop through the qty from the purchase and create the number of credits
+
   const PurchaseCredits = async (e) => {
     try {
       const docRef = await addDoc(collection(db, "credits"), {
@@ -28,11 +27,12 @@ function Dashboard() {
       console.error("Error adding document: ", e);
     }
     alert("Purchase complete! See your credits in the table.");
+
   };
   //TODO: Need to fix the user.uid having a null state and remove the hard coding
-  const getCredits = async (e) => {
-    const q = query(collection(db, "credits"), where("userId", "==", "cLm1tgjbEYRs4stBGoWemJbp4q72"));
-
+  const getCredits = async (uid) => {
+    const q = query(collection(db, "credits"), where("userId", "==", uid ));
+    console.log(q);
     try {
       const querySnapshot = await getDocs(q);
       const creditData = [];
@@ -50,11 +50,13 @@ function Dashboard() {
   return (
     <div>
       <h1>Dashboard</h1>
-      Your userId is {user.uid}
+
+<p>Your userId is {user.uid}</p>
+      
+  
       <div className="buyCredits"></div>
       <h3>Select number of credits to buy</h3>
-      <label>15 min Live person credit - $15</label>
-      <input id="talkQty" type="text"></input> <br />
+      <label>15 min Live person credit - $15</label> <br />
       <button onClick={PurchaseCredits}>Buy</button>
       <div className="creditsTable">
         <table>
@@ -80,6 +82,7 @@ function Dashboard() {
           </tbody>
         </table>
       </div>
+      
     </div>
   );
 }

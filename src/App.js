@@ -33,6 +33,7 @@ function App(props) {
   return (
     <AuthContextProvider >
       <BrowserRouter>
+      
         <SiteHeader />
         <Routes>
           <Route path="/" element={<Homepage />} />
