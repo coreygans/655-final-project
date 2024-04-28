@@ -30,8 +30,8 @@ function Dashboard() {
 
   };
   //TODO: Need to fix the user.uid having a null state and remove the hard coding
-  const getCredits = async (uid) => {
-    const q = query(collection(db, "credits"), where("userId", "==", uid ));
+  const getCredits = async (user) => {
+    const q = query(collection(db, "credits"), where("userId", "==", user ? user.uid : "placeholder" ));
     console.log(q);
     try {
       const querySnapshot = await getDocs(q);
