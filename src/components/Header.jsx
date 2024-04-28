@@ -1,23 +1,40 @@
 import React, { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {auth} from "../firebase";
 import {UserAuth} from "../components/context/AuthContext";
 
 function SiteHeader() {
-  // const {user, logout} = UserAuth();
-  // const navigate = Navigate();
-  // const [error, setError] = useState(null);
 
-  // const handlelogout = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await logout(auth);
-  //     console.log(user);
-  //     navigate('/');
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-  // };
+
+  const {user, logout} = UserAuth();
+
+  function isEmpty(obj) {
+    // Check for null or undefined
+    if (obj == null) return true;
+  
+    // Check for zero length (arrays or strings)
+    if (typeof obj === 'object' && obj.length === 0) {
+      return true;
+    }
+  
+    // Check for enumerable own properties (excluding inherited properties)
+    return Object.keys(obj).length === 0;
+  }
+
+console.log(isEmpty(user));
+  const navigate = useNavigate();
+  const [error, setError] = useState(null);
+
+  const handlelogout = async (e) => {
+    e.preventDefault();
+    try {
+      await logout(auth);
+      console.log(user);
+      navigate('/');
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
   return (
     <header className="header">
@@ -25,15 +42,16 @@ function SiteHeader() {
         <h1>Welcome to Rubber Ducky!</h1>
       </Link>
       <div className="header-links">
-
+      {isEmpty(user) ? (
           <div className="signupin">
             <Link to="/login" className="header-link">
               Sign up / Sign in
             </Link>
-          </div>
+          </div>) : (
           <div className="logout">
-          {/* <a onClick={handlelogout} href="#">Logout</a> */}
-          </div>
+            Welcome {user.email}!
+          <a onClick={handlelogout} href="#">Logout</a>
+          </div>)}
       </div>
       <hr></hr>
       <p className="siteOverview">

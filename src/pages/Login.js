@@ -10,14 +10,16 @@ function Login() {
   const navigate = useNavigate();
   const {createUser, signIn, logout, user} = UserAuth();
 
+
+  
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       await signIn(email, password);
       console.log("The user is logged in");
       console.log(user?.email);
-
-      // navigate('/dashboard');
+      navigate('/dashboard');
     } catch (error) {
       setError(error.message);
     }
@@ -28,7 +30,7 @@ function Login() {
     e.preventDefault();
     try {
      await createUser(email, password).then(console.log("The user was created"));
-    //  navigate('/dashboard');
+     navigate('/dashboard');
     } catch (error) {
       setError(error.message);
     }
@@ -37,7 +39,7 @@ function Login() {
     e.preventDefault();
     try {
      await logout(auth).then(console.log("The user is logged out"));
-    //  navigate('/');
+    navigate('/');
     } catch (error) {
       setError(error.message);
     }
@@ -68,7 +70,6 @@ function Login() {
         <button onClick={handleLogin}>Login</button>
         <button onClick={handleSignUp}>Sign Up</button>
         <button onClick={handleSignout}>Logout</button>
-       <br /> The user logged in has email: {user.email}
 
         {error && <p>{error}</p>}
       </form>

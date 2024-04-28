@@ -1,5 +1,5 @@
 import { React } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import Homepage from "./pages/Homepage";
 import Chat from "./pages/Chat";
@@ -8,11 +8,27 @@ import Talk from "./pages/Talk";
 import Dashboard from "./pages/Dashboard";
 import { AuthContextProvider } from "./components/context/AuthContext";
 import SiteHeader from "./components/Header";
+import {auth} from "./firebase";
 import { UserAuth } from "./components/context/AuthContext";
 
 
 
 function App(props) {
+  const user = UserAuth();
+
+  function isEmpty(obj) {
+    // Check for null or undefined
+    if (obj == null) return true;
+  
+    // Check for zero length (arrays or strings)
+    if (typeof obj === 'object' && obj.length === 0) {
+      return true;
+    }
+  
+    // Check for enumerable own properties (excluding inherited properties)
+    return Object.keys(obj).length === 0;
+  }
+
 
   return (
     <AuthContextProvider >
@@ -24,8 +40,9 @@ function App(props) {
           <Route path="/chat" element={<Chat />} />
 
           <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={ <Dashboard /> } />
 
-          <Route path="/dashboard" element={<Dashboard />} />
+          {/* <Route path="/dashboard" element={ isLoggedOut ? (<Navigate to="/login" replace />) : (<Dashboard />) } /> */}
         </Routes>
       </BrowserRouter>
     </AuthContextProvider>
