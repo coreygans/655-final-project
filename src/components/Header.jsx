@@ -54,7 +54,7 @@ function SiteHeader() {
         ) : (
           <div className="logout">
             Welcome {user.email}! <br />
-            <a href="/dashboard">Dashboard </a>
+            <Link to="/dashboard">Dashboard </Link>
             <a onClick={handlelogout} href="#">
               Logout
             </a>
