@@ -35,15 +35,7 @@ function Login() {
       setError(error.message);
     }
   };
-  const handleSignout = async (e) => {
-    e.preventDefault();
-    try {
-     await logout(auth).then(console.log("The user is logged out"));
-    navigate('/');
-    } catch (error) {
-      setError(error.message);
-    }
-  };
+
 
   return (
     <div> 
